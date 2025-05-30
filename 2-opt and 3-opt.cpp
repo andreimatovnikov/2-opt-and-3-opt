@@ -11,7 +11,7 @@ double cord_distance(const Point& a, const Point& b) {
     return hypot(a.x - b.x, a.y - b.y);
 }
 
-double pathLength(std::vector<int>& tour, std::vector<Point>& points, bool cycle) {
+double path_length(std::vector<int>& tour, std::vector<Point>& points, bool cycle) {
     double total = 0.0;
     for (int i = 0; i < tour.size() - 1; ++i)
         total += cord_distance(points[tour[i]], points[tour[i + 1]]);
@@ -39,7 +39,7 @@ bool two_opt(std::vector<int>& tour, std::vector<Point>& points) {
 }
 
 
-bool threeOptSwap(std::vector<int>& tour, std::vector<Point>& points) {
+bool three_opt(std::vector<int>& tour, std::vector<Point>& points) {
     bool improved = false;
     for (int i = 0; i < tour.size() - 5; ++i) {
         for (int j = i + 2; j < tour.size() - 3; ++j) {
@@ -109,10 +109,10 @@ int main() {
     do {
         improved = two_opt(tour, points);
         if (!improved)
-            improved = threeOptSwap(tour, points);
+            improved = three_opt(tour, points);
     } while (improved);
 
-    double final_length = pathLength(tour, points, true);
+    double final_length = path_length(tour, points, true);
     std::cout << final_length << 1 << std::endl;  
     for (int i = 0; i < tour.size(); ++i)
         std::cout << tour[i] << " ";
