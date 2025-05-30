@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 
 
@@ -112,8 +112,8 @@ int main() {
             improved = threeOptSwap(tour, points);
     } while (improved);
 
-    double finalLength = pathLength(tour, points, true);
-    std::cout << finalLength << 1 << std::endl;  
+    double final_length = pathLength(tour, points, true);
+    std::cout << final_length << 1 << std::endl;  
     for (int i = 0; i < tour.size(); ++i)
         std::cout << tour[i] << " ";
     std::cout << std::endl;
